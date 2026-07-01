@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Happy Lounge Capsule Hotel | Tbilisi</title>
+    <style>
+      :root {
+        --blue: #2f8cff;
+        --ink: #303743;
+        --muted: #748094;
+        --line: #edf0f5;
+        --soft: #f3f3f4;
+        --white: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: #fff;
+        color: var(--ink);
+        font-family: Inter, Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .shell {
+        width: min(100%, 1700px);
+        margin: 0 auto;
+        padding: 64px 70px 110px;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 760px;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        color: #fff;
+        background: #16181d;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(3, 6, 12, .34), rgba(3, 6, 12, .18) 42%, rgba(3, 6, 12, .66) 100%),
+          url("vert-image.webp") center / cover;
+        transform: scale(1.02);
+      }
+
+      .nav {
+        position: absolute;
+        z-index: 2;
+        top: 48px;
+        left: 42px;
+        right: 42px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        font-size: 25px;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: .9;
+        text-transform: uppercase;
+      }
+
+      .brand span {
+        display: block;
+        margin-top: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .04em;
+      }
+
+      .language-picker {
+        position: relative;
+      }
+
+      .language,
+      .language-option {
+        border: 0;
+        color: #fff;
+        background: rgba(255, 255, 255, .08);
+        border-radius: 2px;
+        padding: 8px 12px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .language {
+        min-width: 86px;
+        text-align: left;
+      }
+
+      .language-menu {
+        position: absolute;
+        top: calc(100% + 4px);
+        right: 0;
+        z-index: 5;
+        display: grid;
+        gap: 4px;
+        min-width: 100%;
+      }
+
+      .language-menu[hidden] {
+        display: none;
+      }
+
+      .language-option {
+        width: 100%;
+        white-space: nowrap;
+        text-align: left;
+      }
+
+      .language:hover,
+      .language-option:hover {
+        background: rgba(255, 255, 255, .16);
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        width: min(900px, calc(100% - 44px));
+        margin-top: 150px;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(30px, 4vw, 54px);
+        line-height: 1.08;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .01em;
+      }
+
+      .hero-copy p {
+        max-width: 820px;
+        margin: 0 auto;
+        font-size: 18px;
+        color: rgba(255, 255, 255, .93);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 118px;
+        min-height: 48px;
+        padding: 14px 26px;
+        margin-top: 215px;
+        border: 0;
+        border-radius: 6px;
+        color: #fff;
+        background: var(--blue);
+        box-shadow: 0 12px 24px rgba(47, 140, 255, .24);
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .intro {
+        padding: 28px 20px 42px;
+        text-align: center;
+        background: var(--soft);
+      }
+
+      .intro h2,
+      .section-title {
+        margin: 0 0 12px;
+        font-size: 24px;
+        line-height: 1.2;
+        font-weight: 800;
+      }
+
+      .intro p {
+        max-width: 680px;
+        margin: 0 auto 13px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .intro strong,
+      .accent,
+      .location a {
+        color: var(--blue);
+      }
+
+      section {
+        padding: 86px 0 0;
+      }
+
+      .section-head {
+        margin-bottom: 44px;
+        text-align: center;
+      }
+
+      .lead {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 64px 92px;
+        width: min(960px, 100%);
+        margin: 0 auto;
+      }
+
+      .feature {
+        text-align: center;
+      }
+
+      .feature-icon {
+        width: 68px;
+        height: 68px;
+        margin: 0 auto 18px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #f1f1f2;
+        color: var(--blue);
+      }
+
+      .feature-icon svg {
+        width: 36px;
+        height: 36px;
+      }
+
+      .feature h3 {
+        margin: 0 0 8px;
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .features-toggle {
+        display: none;
+        align-items: baseline;
+        justify-content: center;
+        gap: 6px;
+        margin: 36px auto 0;
+        border: 0;
+        color: var(--blue);
+        background: transparent;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .features-toggle[hidden] {
+        display: none !important;
+      }
+
+      .features-toggle span {
+        display: inline-block;
+        line-height: 1;
+        transform: translateY(-2px);
+        transition: transform .2s ease;
+      }
+
+      .features.is-expanded + .features-toggle span {
+        transform: translateY(-2px) rotate(180deg);
+      }
+
+      .reviews {
+        margin-top: 86px;
+        padding: 44px 20px 60px;
+        background: var(--soft);
+      }
+
+      .review-wrap {
+        display: grid;
+        grid-template-columns: 48px minmax(0, 470px) 48px;
+        align-items: center;
+        justify-content: center;
+        gap: 42px;
+      }
+
+      .arrow {
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 50%;
+        color: var(--blue);
+        background: transparent;
+        font-size: 28px;
+        cursor: pointer;
+      }
+
+      .review-card {
+        min-height: 188px;
+        display: grid;
+        place-items: center;
+        padding: 34px 54px;
+        border-radius: 8px;
+        background: #fff;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(26, 31, 40, .04);
+      }
+
+      .stars {
+        color: var(--blue);
+        font-size: 22px;
+        letter-spacing: .08em;
+      }
+
+      .review-card h3 {
+        margin: 12px 0 10px;
+        font-size: 17px;
+      }
+
+      .quote {
+        margin: 0 0 18px;
+        color: #3e4655;
+        font-size: 15px;
+      }
+
+      .person {
+        margin: 0;
+        color: var(--blue);
+        font-size: 13px;
+        font-style: italic;
+        font-weight: 700;
+      }
+
+      .gallery-carousel {
+        width: min(980px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: center;
+        gap: 18px;
+      }
+
+      .gallery-window {
+        overflow: hidden;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        transition: opacity .2s ease;
+      }
+
+      .gallery-item {
+        position: relative;
+        aspect-ratio: 1.62;
+        overflow: hidden;
+        border: 0;
+        border-radius: 8px;
+        background: #e8ebef;
+        cursor: pointer;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform .35s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.045);
+      }
+
+      .gallery-nav {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 50%;
+        color: var(--blue);
+        background: #f1f5fb;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+        transition: background .2s ease, transform .2s ease;
+      }
+
+      .gallery-nav:hover {
+        background: #e6f0ff;
+        transform: translateY(-1px);
+      }
+
+      .location {
+        margin: 34px 0 0;
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .location strong {
+        display: block;
+        color: var(--blue);
+        font-weight: 800;
+      }
+
+      .map {
+        width: min(980px, 100%);
+        margin: 26px auto 0;
+      }
+
+      .map iframe {
+        width: 100%;
+        height: 360px;
+        display: block;
+        border: 0;
+        border-radius: 8px;
+        background: #e8ebef;
+      }
+
+      .map-credit {
+        margin: 9px 0 0;
+        text-align: center;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .map-credit a {
+        color: var(--blue);
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: none;
+        place-items: center;
+        padding: 24px;
+        background: rgba(9, 12, 18, .84);
+      }
+
+      .booking-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        display: none;
+        place-items: center;
+        padding: 24px;
+        background: rgba(9, 12, 18, .78);
+      }
+
+      .booking-modal.is-open {
+        display: grid;
+      }
+
+      .booking-frame {
+        position: relative;
+        width: min(1120px, 100%);
+        height: min(760px, 88vh);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, .28);
+      }
+
+      .booking-frame iframe {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: 0;
+      }
+
+      .lightbox.is-open {
+        display: grid;
+      }
+
+      .lightbox img {
+        width: min(1040px, 100%);
+        max-height: 86vh;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      .close,
+      .lightbox-nav {
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 50%;
+        color: #fff;
+        background: rgba(255, 255, 255, .14);
+        font-size: 28px;
+        cursor: pointer;
+      }
+
+      .close {
+        top: 20px;
+        right: 22px;
+      }
+
+      .lightbox-nav {
+        top: 50%;
+        transform: translateY(-50%);
+        display: grid;
+        place-items: center;
+      }
+
+      .lightbox-nav[data-lightbox="prev"] {
+        left: 22px;
+      }
+
+      .lightbox-nav[data-lightbox="next"] {
+        right: 22px;
+      }
+
+      @media (max-width: 900px) {
+        .shell {
+          padding: 0;
+        }
+
+        .hero {
+          min-height: 520px;
+        }
+
+        .nav {
+          top: 28px;
+          left: 24px;
+          right: 24px;
+        }
+
+        .brand {
+          font-size: 21px;
+        }
+
+        .brand span {
+          font-size: 11px;
+        }
+
+        .hero-copy {
+          margin-top: 90px;
+        }
+
+        .hero-copy p {
+          font-size: 15px;
+        }
+
+        .button {
+          margin-top: 84px;
+        }
+
+        .intro {
+          padding-inline: 28px;
+        }
+
+        section {
+          padding: 62px 24px 0;
+        }
+
+        .features {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 44px 28px;
+        }
+
+        .reviews {
+          margin-inline: -24px;
+        }
+
+        .review-wrap {
+          grid-template-columns: 28px minmax(0, 1fr) 28px;
+          gap: 6px;
+        }
+
+        .review-card {
+          padding: 30px 24px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 540px) {
+        body {
+          font-size: 14px;
+        }
+
+        .hero {
+          min-height: 568px;
+        }
+
+        .hero::before {
+          background-position: 46% center;
+        }
+
+        h1 {
+          font-size: 28px;
+        }
+
+        .hero-copy {
+          width: calc(100% - 36px);
+        }
+
+        .features {
+          grid-template-columns: 1fr;
+        }
+
+        .features:not(.is-expanded) .feature:nth-child(n+3) {
+          display: none;
+        }
+
+        .features-toggle {
+          display: flex;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-nav {
+          display: block;
+          width: 38px;
+          height: 38px;
+        }
+
+        .gallery-carousel {
+          width: calc(100vw - 48px);
+          margin-inline: auto;
+          grid-template-columns: 10px minmax(0, 1fr) 10px;
+          gap: 8px;
+        }
+
+        .gallery-nav {
+          justify-self: center;
+        }
+
+        .lightbox {
+          padding: 56px 16px;
+        }
+
+        .booking-modal {
+          padding: 14px;
+        }
+
+        .booking-frame {
+          height: 86vh;
+        }
+
+        .lightbox-nav {
+          top: auto;
+          bottom: 18px;
+          transform: none;
+        }
+
+        .review-wrap {
+          grid-template-columns: 38px minmax(0, 1fr) 38px;
+          gap: 8px;
+        }
+
+        .arrow {
+          display: block;
+          width: 38px;
+          height: 38px;
+          background: #f1f5fb;
+          line-height: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="shell">
+        <header class="hero" id="top">
+          <nav class="nav" aria-label="Main navigation">
+            <a class="brand" href="#top">Happy Lounge<span>Capsule Hotel | Tbilisi</span></a>
+            <div class="language-picker">
+              <button class="language" type="button" aria-label="Language" aria-expanded="false">ENGLISH</button>
+              <div class="language-menu" hidden>
+                <button class="language-option" type="button" data-language="ru">РУССКИЙ</button>
+                <button class="language-option" type="button" data-language="ka">ქართული</button>
+              </div>
+            </div>
+          </nav>
+
+          <div class="hero-copy">
+            <h1>Discover a new format of staying - efficient, atmospheric, and unforgettable</h1>
+            <p>Modern, seamless, and thoughtfully designed - your stay begins the moment you arrive.</p>
+            <button class="button" type="button" data-booking-open>Book Now!</button>
+          </div>
+        </header>
+
+        <div class="intro">
+          <h2>Stay at the crossroads of the city - and step into another reality.</h2>
+          <p><strong>Comfortable Accommodations:</strong> Capsule Hotel Happy Lounge in Tbilisi offers air-conditioned rooms with private check-in and check-out services, a lounge, and a 24-hour front desk. Guests enjoy free WiFi, daily housekeeping, and luggage storage.</p>
+          <p><strong>Modern Amenities:</strong> Each room features a refrigerator, shared bathroom, seating area, shower, dining area, and kitchenware. Additional amenities include a TV, ensuring a pleasant stay.</p>
+        </div>
+
+        <section aria-labelledby="comfort-title">
+          <div class="section-head">
+            <h2 class="section-title" id="comfort-title">Find the stay that fits you perfectly</h2>
+            <p class="lead">Everything you need for a <span class="accent">comfortable stay</span> in Tbilisi</p>
+          </div>
+
+          <div class="features">
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 10.5V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2.5h-2V8a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v2.5H4Z"/><path d="M3 11.5h18a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1h-1v1.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5V19H6v1.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5V19H3a1 1 0 0 1-1-1v-5.5a1 1 0 0 1 1-1Z"/></svg>
+              </div>
+              <h3>Capsule Types</h3>
+              <p>Minimal basic - simple, smart, and comfortable. Immersive full - enhanced experience with a built-in Smart TV. Double capsule - designed for two without compromising personal comfort.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a1 1 0 0 1 .88.52l1.73 3.18 3.56.66a1 1 0 0 1 .55 1.69l-2.49 2.62.46 3.58a1 1 0 0 1-1.43 1.02L12 14.02l-3.26 1.5a1 1 0 0 1-1.43-1.02l.46-3.58L5.28 8.3a1 1 0 0 1 .55-1.69l3.56-.66 1.73-3.18a1 1 0 0 1 .88-.52Z"/><path d="M5.5 17.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/><path d="M21.5 17.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/><path d="M13.5 20.25a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
+              </div>
+              <h3>Personalized Comfort</h3>
+              <p>All capsules feature adjustable RGB lighting and ventilation, so you can create your ideal atmosphere.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 9V7a4 4 0 0 1 8 0v2h-2V7a2 2 0 0 0-4 0v2H8Z"/><path d="M6 9h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Zm7 6.73a2 2 0 1 0-2 0V18h2v-2.27Z"/></svg>
+              </div>
+              <h3>Secure Storage</h3>
+              <p>Each stay includes a safe locker for your belongings - peace of mind, always.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a8 8 0 0 0-8 8c0 6.1 7.04 11.55 7.34 11.78a1.08 1.08 0 0 0 1.32 0C12.96 21.55 20 16.1 20 10a8 8 0 0 0-8-8Zm0 10.8A2.8 2.8 0 1 1 12 7.2a2.8 2.8 0 0 1 0 5.6Z"/></svg>
+              </div>
+              <h3>Prime Location</h3>
+              <p>Situated in the very heart of the city, at the intersection of major transport routes.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 2.28a1 1 0 0 1 .36 1.06L12.4 9H18a1 1 0 0 1 .8 1.6l-8 11a1 1 0 0 1-1.76-.82L10.6 15H5a1 1 0 0 1-.8-1.6l8-11a1 1 0 0 1 1.4-.12Z"/></svg>
+              </div>
+              <h3>Effortless Check-In</h3>
+              <p>Open 24/7. No delays, no complications - just your passport and you're in.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 10a8 8 0 0 1 16 0H4Z"/><path d="M3 11h18a1 1 0 0 1 0 2h-1.08l-1.2 5.42A3.25 3.25 0 0 1 15.55 21h-7.1a3.25 3.25 0 0 1-3.17-2.58L4.08 13H3a1 1 0 1 1 0-2Zm6 4a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H9Z"/></svg>
+              </div>
+              <h3>Breakfast Option</h3>
+              <p>Start your day right - add breakfast to your booking anytime. Please note: breakfast is optional during the low season.</p>
+            </article>
+          </div>
+          <button class="features-toggle" type="button" aria-expanded="false" aria-label="Show more amenities">Show more <span aria-hidden="true">⌄</span></button>
+        </section>
+
+        <section class="reviews" aria-labelledby="reviews-title">
+          <div class="section-head">
+            <h2 class="section-title" id="reviews-title">What Our Guests Say</h2>
+            <p class="lead">Real experiences from <a href="#gallery">travelers</a> around the world</p>
+          </div>
+
+          <div class="review-wrap">
+            <button class="arrow" type="button" data-review="prev" aria-label="Previous review">&lsaquo;</button>
+            <article class="review-card" aria-live="polite">
+              <div>
+                <div class="stars" aria-label="Five stars">*****</div>
+                <h3 id="review-title">Exceptional</h3>
+                <p class="quote" id="review-text">"Great Location, easy check-in, private & comfortable. Nice open space with communal areas for chilling."</p>
+                <p class="person" id="review-person">Mark, South Africa</p>
+              </div>
+            </article>
+            <button class="arrow" type="button" data-review="next" aria-label="Next review">&rsaquo;</button>
+          </div>
+        </section>
+
+        <section id="gallery" aria-labelledby="gallery-title">
+          <div class="section-head">
+            <h2 class="section-title" id="gallery-title">Gallery</h2>
+            <p class="lead">Photos from <span class="accent">Happy Lounge capsule hotel</span></p>
+          </div>
+
+          <div class="gallery-carousel" aria-label="Photo gallery">
+            <button class="gallery-nav" type="button" data-gallery="prev" aria-label="Previous gallery photo">&lsaquo;</button>
+            <div class="gallery-window">
+              <div class="gallery-grid" aria-live="polite">
+                <button class="gallery-item" type="button"><img src="gallery/684155150_18098393440895782_4862020916351866538_n.webp" alt="Capsule corridor with colorful lighting" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/682069447_18098393422895782_2488191331302629506_n.webp" alt="White capsule with television" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/681920488_18098393431895782_4085752355504998857_n.webp" alt="Pink capsule interior with bed" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/684155150_18098393440895782_4862020916351866538_n.webp" alt="Blue capsule room with round mirror and television" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/684150819_18098393386895782_7924636822680206781_n.webp" alt="Bright white capsule room" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/684228118_18098393449895782_8203935883988234420_n.webp" alt="Blue illuminated capsule room" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/684169367_18098393476895782_5534451310426061828_n.webp" alt="Green illuminated capsule room" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/682900250_18098393395895782_5038816440864659210_n.webp" alt="Blue capsule corridor" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/682692610_18098393485895782_7078476068532810665_n.webp" alt="Purple capsule room" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/682070088_18098393467895782_8196955684394527818_n.webp" alt="Capsule room with cool blue lighting" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/683885801_18098393404895782_3730434924778010777_n.webp" alt="White capsule with soft neon light" /></button>
+                <button class="gallery-item" type="button"><img src="gallery/684166545_18098393377895782_4506078063963357471_n.webp" alt="Capsule bed with violet light" /></button>
+              </div>
+            </div>
+            <button class="gallery-nav" type="button" data-gallery="next" aria-label="Next gallery photo">&rsaquo;</button>
+          </div>
+
+          <p class="location">
+            <strong>Happy Lounge capsule hotel</strong>
+            63 Merab Kostava St, Tbilisi, Georgia
+          </p>
+
+          <div class="map" aria-label="Map showing Happy Lounge capsule hotel location">
+            <iframe
+              title="Happy Lounge capsule hotel on OpenStreetMap"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=44.778185%2C41.712087%2C44.786185%2C41.716087&amp;layer=mapnik&amp;marker=41.714087%2C44.782185"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <p class="map-credit">
+              Map data from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a>
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Gallery preview">
+      <button class="close" type="button" aria-label="Close preview">&times;</button>
+      <button class="lightbox-nav" type="button" data-lightbox="prev" aria-label="Previous large photo">&lsaquo;</button>
+      <img src="" alt="" />
+      <button class="lightbox-nav" type="button" data-lightbox="next" aria-label="Next large photo">&rsaquo;</button>
+    </div>
+
+    <div class="booking-modal" id="booking-modal" aria-modal="true" role="dialog" aria-label="Booking widget">
+      <div class="booking-frame">
+        <button class="close" type="button" data-booking-close aria-label="Close booking widget">&times;</button>
+        <iframe
+          title="Happy Lounge booking widget"
+          src="https://booking-online.otelms.com/?hms_system_id=19204/"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+    <script>
+      const reviews = [
+        {
+          title: "Exceptional",
+          text: "\"Great Location, easy check-in, private & comfortable. Nice open space with communal areas for chilling.\"",
+          person: "Mark, South Africa"
+        },
+        {
+          title: "Excellent stay",
+          text: "\"Clean capsules, friendly staff, and the lighting inside the room made the stay feel futuristic.\"",
+          person: "Anna, Poland"
+        },
+        {
+          title: "Perfect for Tbilisi",
+          text: "\"The location is easy to reach, check-in was fast, and the common area was calm after a long day.\"",
+          person: "David, Germany"
+        }
+      ];
+
+      const translations = {
+        en: {
+          "html": { lang: "en" },
+          ".language": { ariaLabel: "Language" },
+          ".brand span": { text: "Capsule Hotel | Tbilisi" },
+          ".hero-copy h1": { text: "Discover a new format of staying - efficient, atmospheric, and unforgettable" },
+          ".hero-copy p": { text: "Modern, seamless, and thoughtfully designed - your stay begins the moment you arrive." },
+          ".button": { text: "Book Now!" },
+          ".intro h2": { text: "Stay at the crossroads of the city - and step into another reality." },
+          ".intro p:nth-of-type(1)": { html: "<strong>Comfortable Accommodations:</strong> Capsule Hotel Happy Lounge in Tbilisi offers air-conditioned rooms with private check-in and check-out services, a lounge, and a 24-hour front desk. Guests enjoy free WiFi, daily housekeeping, and luggage storage." },
+          ".intro p:nth-of-type(2)": { html: "<strong>Modern Amenities:</strong> Each room features a refrigerator, shared bathroom, seating area, shower, dining area, and kitchenware. Additional amenities include a TV, ensuring a pleasant stay." },
+          "#comfort-title": { text: "Find the stay that fits you perfectly" },
+          "section[aria-labelledby='comfort-title'] .lead": { html: "Everything you need for a <span class=\"accent\">comfortable stay</span> in Tbilisi" },
+          ".feature:nth-child(1) h3": { text: "Capsule Types" },
+          ".feature:nth-child(1) p": { text: "Minimal basic - simple, smart, and comfortable. Immersive full - enhanced experience with a built-in Smart TV. Double capsule - designed for two without compromising personal comfort." },
+          ".feature:nth-child(2) h3": { text: "Personalized Comfort" },
+          ".feature:nth-child(2) p": { text: "All capsules feature adjustable RGB lighting and ventilation, so you can create your ideal atmosphere." },
+          ".feature:nth-child(3) h3": { text: "Secure Storage" },
+          ".feature:nth-child(3) p": { text: "Each stay includes a safe locker for your belongings - peace of mind, always." },
+          ".feature:nth-child(4) h3": { text: "Prime Location" },
+          ".feature:nth-child(4) p": { text: "Situated in the very heart of the city, at the intersection of major transport routes." },
+          ".feature:nth-child(5) h3": { text: "Effortless Check-In" },
+          ".feature:nth-child(5) p": { text: "Open 24/7. No delays, no complications - just your passport and you're in." },
+          ".feature:nth-child(6) h3": { text: "Breakfast Option" },
+          ".feature:nth-child(6) p": { text: "Start your day right - add breakfast to your booking anytime. Please note: breakfast is optional during the low season." },
+          ".features-toggle": { html: "Show more <span aria-hidden=\"true\">⌄</span>", ariaLabel: "Show more amenities" },
+          "#reviews-title": { text: "What Our Guests Say" },
+          ".reviews .lead": { html: "Real experiences from <a href=\"#gallery\">travelers</a> around the world" },
+          "#gallery-title": { text: "Gallery" },
+          "#gallery .section-head .lead": { html: "Photos from <span class=\"accent\">Happy Lounge capsule hotel</span>" },
+          ".location": { html: "<strong>Happy Lounge capsule hotel</strong>63 Merab Kostava St, Tbilisi, Georgia" },
+          ".map": { ariaLabel: "Map showing Happy Lounge capsule hotel location" },
+          ".map iframe": { title: "Happy Lounge capsule hotel on OpenStreetMap" },
+          ".map-credit": { html: "Map data from <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noreferrer\">OpenStreetMap</a>" },
+          "[data-gallery='prev']": { ariaLabel: "Previous gallery photo" },
+          "[data-gallery='next']": { ariaLabel: "Next gallery photo" },
+          "#lightbox": { ariaLabel: "Gallery preview" },
+          ".close": { ariaLabel: "Close preview" },
+          "#booking-modal": { ariaLabel: "Booking widget" },
+          "[data-booking-close]": { ariaLabel: "Close booking widget" },
+          ".booking-frame iframe": { title: "Happy Lounge booking widget" },
+          "[data-lightbox='prev']": { ariaLabel: "Previous large photo" },
+          "[data-lightbox='next']": { ariaLabel: "Next large photo" }
+        },
+        ru: {
+          "html": { lang: "ru" },
+          ".language": { ariaLabel: "Язык" },
+          ".brand span": { text: "Капсульный отель | Тбилиси" },
+          ".hero-copy h1": { text: "Откройте новый формат проживания - эффективный, атмосферный и незабываемый" },
+          ".hero-copy p": { text: "Современно, удобно и продуманно - ваше пребывание начинается с момента прибытия." },
+          ".button": { text: "Забронировать" },
+          ".intro h2": { text: "Остановитесь на перекрёстке города - и шагните в другую реальность." },
+          ".intro p:nth-of-type(1)": { html: "<strong>Комфортное размещение:</strong> Capsule Hotel Happy Lounge в Тбилиси предлагает кондиционированные номера, индивидуальную регистрацию заезда и выезда, лаунж-зону и круглосуточную стойку регистрации. Гостям доступны бесплатный Wi-Fi, ежедневная уборка и хранение багажа." },
+          ".intro p:nth-of-type(2)": { html: "<strong>Современные удобства:</strong> В каждом номере есть холодильник, общая ванная комната, зона отдыха, душ, обеденная зона и кухонные принадлежности. Также предусмотрен телевизор для приятного пребывания." },
+          "#comfort-title": { text: "Найдите формат проживания, который подходит именно вам" },
+          "section[aria-labelledby='comfort-title'] .lead": { html: "Всё, что нужно для <span class=\"accent\">комфортного проживания</span> в Тбилиси" },
+          ".feature:nth-child(1) h3": { text: "Типы капсул" },
+          ".feature:nth-child(1) p": { text: "Minimal basic - просто, продуманно и комфортно. Immersive full - расширенный опыт с встроенным Smart TV. Double capsule - вариант для двоих без компромиссов в личном комфорте." },
+          ".feature:nth-child(2) h3": { text: "Персональный комфорт" },
+          ".feature:nth-child(2) p": { text: "Во всех капсулах есть регулируемая RGB-подсветка и вентиляция, чтобы вы могли создать идеальную атмосферу." },
+          ".feature:nth-child(3) h3": { text: "Безопасное хранение" },
+          ".feature:nth-child(3) p": { text: "В каждое проживание входит надёжный шкафчик для ваших вещей - спокойствие всегда рядом." },
+          ".feature:nth-child(4) h3": { text: "Удобное расположение" },
+          ".feature:nth-child(4) p": { text: "Отель расположен в самом сердце города, на пересечении основных транспортных маршрутов." },
+          ".feature:nth-child(5) h3": { text: "Быстрый заезд" },
+          ".feature:nth-child(5) p": { text: "Открыто 24/7. Без задержек и сложностей - нужен только паспорт, и вы уже внутри." },
+          ".feature:nth-child(6) h3": { text: "Завтрак по желанию" },
+          ".feature:nth-child(6) p": { text: "Начните день правильно - добавьте завтрак к бронированию в любое время. Обратите внимание: в низкий сезон завтрак предоставляется опционально." },
+          ".features-toggle": { html: "Показать ещё <span aria-hidden=\"true\">⌄</span>", ariaLabel: "Показать больше преимуществ" },
+          "#reviews-title": { text: "Что говорят наши гости" },
+          ".reviews .lead": { html: "Реальные впечатления <a href=\"#gallery\">путешественников</a> со всего мира" },
+          "#gallery-title": { text: "Галерея" },
+          "#gallery .section-head .lead": { html: "Фотографии <span class=\"accent\">Happy Lounge capsule hotel</span>" },
+          ".location": { html: "<strong>Happy Lounge capsule hotel</strong>63 Merab Kostava St, Тбилиси, Грузия" },
+          ".map": { ariaLabel: "Карта с расположением Happy Lounge capsule hotel" },
+          ".map iframe": { title: "Happy Lounge capsule hotel на карте OpenStreetMap" },
+          ".map-credit": { html: "Данные карты: <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noreferrer\">OpenStreetMap</a>" },
+          "[data-gallery='prev']": { ariaLabel: "Предыдущее фото галереи" },
+          "[data-gallery='next']": { ariaLabel: "Следующее фото галереи" },
+          "#lightbox": { ariaLabel: "Просмотр галереи" },
+          ".close": { ariaLabel: "Закрыть просмотр" },
+          "#booking-modal": { ariaLabel: "Виджет бронирования" },
+          "[data-booking-close]": { ariaLabel: "Закрыть виджет бронирования" },
+          ".booking-frame iframe": { title: "Виджет бронирования Happy Lounge" },
+          "[data-lightbox='prev']": { ariaLabel: "Предыдущее крупное фото" },
+          "[data-lightbox='next']": { ariaLabel: "Следующее крупное фото" }
+        },
+        ka: {
+          "html": { lang: "ka" },
+          ".language": { ariaLabel: "ენა" },
+          ".brand span": { text: "კაფსულური სასტუმრო | თბილისი" },
+          ".hero-copy h1": { text: "აღმოაჩინეთ დარჩენის ახალი ფორმატი - ეფექტური, ატმოსფერული და დაუვიწყარი" },
+          ".hero-copy p": { text: "თანამედროვე, მარტივი და გააზრებულად შექმნილი - თქვენი დასვენება იწყება ჩამოსვლისთანავე." },
+          ".button": { text: "დაჯავშნა" },
+          ".intro h2": { text: "დარჩით ქალაქის გზაჯვარედინზე - და გადადით სხვა რეალობაში." },
+          ".intro p:nth-of-type(1)": { html: "<strong>კომფორტული განთავსება:</strong> Capsule Hotel Happy Lounge თბილისში გთავაზობთ კონდიცირებულ ოთახებს, ინდივიდუალურ შესვლასა და გასვლას, ლაუნჯ-სივრცეს და 24-საათიან მისაღებს. სტუმრებს აქვთ უფასო Wi‑Fi, ყოველდღიური დალაგება და ბარგის შენახვა." },
+          ".intro p:nth-of-type(2)": { html: "<strong>თანამედროვე კომფორტი:</strong> თითოეულ ოთახში არის მაცივარი, საერთო სააბაზანო, დასასვენებელი სივრცე, შხაპი, სასადილო ზონა და სამზარეულოს ნივთები. სასიამოვნო ყოფნისთვის ასევე ხელმისაწვდომია ტელევიზორი." },
+          "#comfort-title": { text: "იპოვეთ დარჩენის ფორმატი, რომელიც ზუსტად თქვენ გერგებათ" },
+          "section[aria-labelledby='comfort-title'] .lead": { html: "ყველაფერი, რაც გჭირდებათ <span class=\"accent\">კომფორტული დარჩენისთვის</span> თბილისში" },
+          ".feature:nth-child(1) h3": { text: "კაფსულის ტიპები" },
+          ".feature:nth-child(1) p": { text: "Minimal basic - მარტივი, ჭკვიანი და კომფორტული. Immersive full - გაუმჯობესებული გამოცდილება ჩაშენებული Smart TV-ით. Double capsule - შექმნილია ორისთვის, პირადი კომფორტის დათმობის გარეშე." },
+          ".feature:nth-child(2) h3": { text: "პერსონალური კომფორტი" },
+          ".feature:nth-child(2) p": { text: "ყველა კაფსულას აქვს რეგულირებადი RGB განათება და ვენტილაცია, რათა შექმნათ თქვენთვის იდეალური ატმოსფერო." },
+          ".feature:nth-child(3) h3": { text: "უსაფრთხო შენახვა" },
+          ".feature:nth-child(3) p": { text: "ყოველ დარჩენაში შედის უსაფრთხო საკეტი თქვენი ნივთებისთვის - სიმშვიდე ყოველთვის თქვენთანაა." },
+          ".feature:nth-child(4) h3": { text: "მოხერხებული მდებარეობა" },
+          ".feature:nth-child(4) p": { text: "სასტუმრო მდებარეობს ქალაქის გულში, ძირითადი სატრანსპორტო მარშრუტების გადაკვეთაზე." },
+          ".feature:nth-child(5) h3": { text: "მარტივი შესვლა" },
+          ".feature:nth-child(5) p": { text: "ღიაა 24/7. დაყოვნებისა და სირთულეების გარეშე - მხოლოდ პასპორტი და უკვე შიგნით ხართ." },
+          ".feature:nth-child(6) h3": { text: "საუზმის არჩევანი" },
+          ".feature:nth-child(6) p": { text: "დაიწყეთ დღე სწორად - საუზმე შეგიძლიათ დაამატოთ ჯავშანს ნებისმიერ დროს. გაითვალისწინეთ: დაბალ სეზონზე საუზმე არჩევითია." },
+          ".features-toggle": { html: "მეტის ჩვენება <span aria-hidden=\"true\">⌄</span>", ariaLabel: "მეტი უპირატესობის ჩვენება" },
+          "#reviews-title": { text: "რას ამბობენ ჩვენი სტუმრები" },
+          ".reviews .lead": { html: "რეალური შთაბეჭდილებები <a href=\"#gallery\">მოგზაურებისგან</a> მთელი მსოფლიოდან" },
+          "#gallery-title": { text: "გალერეა" },
+          "#gallery .section-head .lead": { html: "ფოტოები <span class=\"accent\">Happy Lounge capsule hotel</span>-დან" },
+          ".location": { html: "<strong>Happy Lounge capsule hotel</strong>63 Merab Kostava St, თბილისი, საქართველო" },
+          ".map": { ariaLabel: "რუკა Happy Lounge capsule hotel-ის მდებარეობით" },
+          ".map iframe": { title: "Happy Lounge capsule hotel OpenStreetMap-ზე" },
+          ".map-credit": { html: "რუკის მონაცემები: <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noreferrer\">OpenStreetMap</a>" },
+          "[data-gallery='prev']": { ariaLabel: "გალერეის წინა ფოტო" },
+          "[data-gallery='next']": { ariaLabel: "გალერეის შემდეგი ფოტო" },
+          "#lightbox": { ariaLabel: "გალერეის ნახვა" },
+          ".close": { ariaLabel: "ნახვის დახურვა" },
+          "#booking-modal": { ariaLabel: "ჯავშნის ვიჯეტი" },
+          "[data-booking-close]": { ariaLabel: "ჯავშნის ვიჯეტის დახურვა" },
+          ".booking-frame iframe": { title: "Happy Lounge-ის ჯავშნის ვიჯეტი" },
+          "[data-lightbox='prev']": { ariaLabel: "წინა დიდი ფოტო" },
+          "[data-lightbox='next']": { ariaLabel: "შემდეგი დიდი ფოტო" }
+        }
+      };
+
+      const languageButton = document.querySelector(".language");
+      const languageMenu = document.querySelector(".language-menu");
+      const features = document.querySelector(".features");
+      const featuresToggle = document.querySelector(".features-toggle");
+      let currentLanguage = "en";
+      let featuresExpanded = false;
+      const languageLabels = {
+        en: "ENGLISH",
+        ru: "РУССКИЙ",
+        ka: "ქართული"
+      };
+
+      function renderLanguageMenu() {
+        languageButton.textContent = languageLabels[currentLanguage];
+        languageMenu.innerHTML = "";
+
+        Object.entries(languageLabels).forEach(([language, label]) => {
+          if (language === currentLanguage) return;
+          const option = document.createElement("button");
+          option.className = "language-option";
+          option.type = "button";
+          option.dataset.language = language;
+          option.textContent = label;
+          option.addEventListener("click", () => {
+            applyLanguage(language);
+            closeLanguageMenu();
+          });
+          languageMenu.appendChild(option);
+        });
+      }
+
+      function openLanguageMenu() {
+        languageMenu.hidden = false;
+        languageButton.setAttribute("aria-expanded", "true");
+      }
+
+      function closeLanguageMenu() {
+        languageMenu.hidden = true;
+        languageButton.setAttribute("aria-expanded", "false");
+      }
+
+      function updateFeaturesToggle() {
+        features.classList.toggle("is-expanded", featuresExpanded);
+        featuresToggle.setAttribute("aria-expanded", String(featuresExpanded));
+        featuresToggle.hidden = featuresExpanded;
+
+        if (!featuresExpanded) {
+          const toggleTranslation = (translations[currentLanguage] || translations.en)[".features-toggle"];
+          featuresToggle.innerHTML = toggleTranslation.html;
+          featuresToggle.setAttribute("aria-label", toggleTranslation.ariaLabel);
+        }
+      }
+
+      function applyLanguage(language) {
+        currentLanguage = languageLabels[language] ? language : "en";
+        const activeTranslations = translations[currentLanguage] || translations.en;
+        Object.entries(activeTranslations).forEach(([selector, values]) => {
+          const node = selector === "html" ? document.documentElement : document.querySelector(selector);
+          if (!node) return;
+          if (values.text != null) node.textContent = values.text;
+          if (values.html != null) node.innerHTML = values.html;
+          if (values.lang != null) node.lang = values.lang;
+          if (values.ariaLabel != null) node.setAttribute("aria-label", values.ariaLabel);
+          if (values.title != null) node.setAttribute("title", values.title);
+        });
+        renderLanguageMenu();
+        updateFeaturesToggle();
+      }
+
+      languageButton.addEventListener("click", () => {
+        if (languageMenu.hidden) {
+          openLanguageMenu();
+        } else {
+          closeLanguageMenu();
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!event.target.closest(".language-picker")) closeLanguageMenu();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLanguageMenu();
+      });
+
+      featuresToggle.addEventListener("click", () => {
+        featuresExpanded = true;
+        updateFeaturesToggle();
+      });
+      renderLanguageMenu();
+      updateFeaturesToggle();
+
+      let reviewIndex = 0;
+      const title = document.querySelector("#review-title");
+      const text = document.querySelector("#review-text");
+      const person = document.querySelector("#review-person");
+
+      function renderReview() {
+        const review = reviews[reviewIndex];
+        title.textContent = review.title;
+        text.textContent = review.text;
+        person.textContent = review.person;
+      }
+
+      document.querySelectorAll("[data-review]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const direction = button.dataset.review === "next" ? 1 : -1;
+          reviewIndex = (reviewIndex + direction + reviews.length) % reviews.length;
+          renderReview();
+        });
+      });
+
+      const lightbox = document.querySelector("#lightbox");
+      const lightboxImage = lightbox.querySelector("img");
+      const bookingModal = document.querySelector("#booking-modal");
+      const bookingOpen = document.querySelector("[data-booking-open]");
+      const bookingClose = document.querySelector("[data-booking-close]");
+      const galleryGrid = document.querySelector(".gallery-grid");
+      const galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
+      let galleryIndex = 0;
+      let lightboxIndex = 0;
+
+      function getVisibleGalleryCount() {
+        if (window.matchMedia("(max-width: 540px)").matches) return 1;
+        if (window.matchMedia("(max-width: 900px)").matches) return 2;
+        return galleryItems.length;
+      }
+
+      function renderGallery() {
+        const visibleCount = getVisibleGalleryCount();
+        const columnCount = visibleCount === galleryItems.length ? 4 : visibleCount;
+        galleryGrid.style.gridTemplateColumns = `repeat(${columnCount}, minmax(0, 1fr))`;
+
+        galleryItems.forEach((item, itemIndex) => {
+          const offset = (itemIndex - galleryIndex + galleryItems.length) % galleryItems.length;
+          const isVisible = visibleCount === galleryItems.length || offset < visibleCount;
+          item.hidden = !isVisible;
+          item.setAttribute("aria-hidden", String(!isVisible));
+        });
+      }
+
+      document.querySelectorAll("[data-gallery]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const direction = button.dataset.gallery === "next" ? 1 : -1;
+          galleryIndex = (galleryIndex + direction + galleryItems.length) % galleryItems.length;
+          renderGallery();
+        });
+      });
+
+      function openLightbox(index) {
+        const image = galleryItems[index].querySelector("img");
+        lightboxIndex = index;
+        lightboxImage.src = image.currentSrc;
+        lightboxImage.alt = image.alt;
+        lightbox.classList.add("is-open");
+      }
+
+      function showLightboxImage(direction) {
+        lightboxIndex = (lightboxIndex + direction + galleryItems.length) % galleryItems.length;
+        openLightbox(lightboxIndex);
+      }
+
+      galleryItems.forEach((item, itemIndex) => {
+        const image = item.querySelector("img");
+        image.addEventListener("click", () => openLightbox(itemIndex));
+      });
+
+      document.querySelectorAll("[data-lightbox]").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          showLightboxImage(button.dataset.lightbox === "next" ? 1 : -1);
+        });
+      });
+
+      window.addEventListener("resize", renderGallery);
+      renderGallery();
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightboxImage.src = "";
+      }
+
+      function openBookingModal() {
+        bookingModal.classList.add("is-open");
+      }
+
+      function closeBookingModal() {
+        bookingModal.classList.remove("is-open");
+      }
+
+      bookingOpen.addEventListener("click", openBookingModal);
+      bookingClose.addEventListener("click", closeBookingModal);
+      bookingModal.addEventListener("click", (event) => {
+        if (event.target === bookingModal) closeBookingModal();
+      });
+
+      lightbox.querySelector(".close").addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && bookingModal.classList.contains("is-open")) {
+          closeBookingModal();
+          return;
+        }
+        if (!lightbox.classList.contains("is-open")) return;
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") showLightboxImage(-1);
+        if (event.key === "ArrowRight") showLightboxImage(1);
+      });
+    </script>
+  </body>
+</html>
