@@ -1,4 +1,4 @@
 :HL["/happy-lounge/_next/static/chunks/0t_05y0c7rd2u.css","style"]
 :HL["/happy-lounge/_next/static/media/a343f882a40d2cc9-s.p.0kho-wj7-y-w1.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/happy-lounge/_next/static/media/d3fe2f289711ac3f-s.p.0i6ci0u~g4zml.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"O-18yGO-igAsHOrmhNT8r"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"D8cHwpF1Ms4xzoo0xDUIm"}
