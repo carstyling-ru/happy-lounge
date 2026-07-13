@@ -2,4 +2,4 @@
 2:I[12224,["/happy-lounge/_next/static/chunks/1436m04qw.vl-.js","/happy-lounge/_next/static/chunks/0jdah9p5of~i~.js"],"default"]
 3:I[67689,["/happy-lounge/_next/static/chunks/1436m04qw.vl-.js","/happy-lounge/_next/static/chunks/0jdah9p5of~i~.js"],"default"]
 4:[]
-0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"mhURFvUfbbU3lpU021qGo"}
+0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"Qj8Qzz5JJL0Lo9MxtbBko"}
