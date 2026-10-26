@@ -1,0 +1,58 @@
+# Happy Lounge Prototype
+
+Run the local preview with `pnpm dev --port 3100`.
+
+The shared page supports two hotels and three languages through URL parameters:
+
+- `/?city=tbilisi&lang=en`
+- `/?city=batumi&lang=ru`
+- `/?city=batumi&lang=ka`
+
+The default city is Tbilisi and the default language is English. City selection
+preserves the language and supports browser history, direct links, and reloads.
+These query-based URLs also work on the GitHub Pages static export.
+
+Batumi content and translations live in `components/batumi-content.ts`. Photos
+are stored locally in `public/happy-lounge/batumi/`. Both hotels use the shared
+Instagram link in the footer.
+
+## Booking
+
+Tbilisi keeps its existing OtelMS link. Batumi uses the Exely scripts supplied in
+`happy-lounge.zip`, with context `BE-INT-happy-lounge_2026-10-26` and locales
+`en`, `ru`, and `ka`.
+
+The search form sits over the desktop hero and below it on mobile/tablet. The
+main booking link opens all room types in Exely's own modal. The capsule links
+pass the supplied room IDs: Minimal Basic `5081198`, Immersive Full `5081199`,
+and Double Capsule `5081200`.
+
+City changes and Batumi language changes load a fresh document so Exely cannot
+retain another hotel's context or show a stale-language widget. The loader is
+inserted in the document head only on Batumi, once per document, with the three
+fallback hosts supplied by Exely. No booking, payment, or guest information is
+handled by the prototype itself.
+
+The Expedia link remains only as a review source. All five Expedia reviews have
+localized author names, dates, scores, and concise paraphrases in EN/RU/KA in
+`lib/batumi-reviews.ts`; the summaries are explicitly labelled and link to the
+full source reviews. The official Expedia logo is stored locally. Both hotel
+maps use Google Maps. Tbilisi phone and email are not shown as Batumi contact
+details. The archive contains no Google Search Console verification file or
+meta tag.
+
+## Batumi Sources
+
+- Copy: https://docs.google.com/document/d/1p8tszczkxW0bJj_wDt92LG7AcPPRdZzZoEmiCr8A7fo/edit
+- Address and photos: https://www.expedia.de/en/Batumi-Hotels-Capsule-Hotel-Happy-Lounge-Batumi.h136443801.Hotel-Information
+- Hero: https://images.trvl-media.com/lodging/137000000/136450000/136443900/136443801/038c8a95.jpg
+- Review excerpt: https://www.expedia.ie/New-Boulevard-Batumi-Hotels.0-n553248633981744058-0.Travel-Guide-Filter-Hotels
+
+## Checks
+
+Run `node --test tests/*.test.mjs`, `pnpm exec tsc --noEmit`, and
+`pnpm build` before publication. Verify the live Exely form and popup without
+submitting a reservation or payment.
+
+See `docs/exely-integration-check.md` for the local verification results and
+the pending Exely popup connection check on the published domain.
