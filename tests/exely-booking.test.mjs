@@ -7,21 +7,64 @@ import {
   batumiRoomTypes,
   getBatumiBookingHref,
   getExelyBootstrapScript,
+  getExelyPreloadScript,
 } from "../lib/exely-booking.ts"
 
-function loaderEnvironment(language) {
+function loaderEnvironment(language, script = getExelyBootstrapScript(language), search = "") {
   const scripts = []
+  const links = []
   const head = {
-    appendChild(script) { scripts.push(script) },
+    appendChild(element) { (element.tagName === "LINK" ? links : scripts).push(element) },
     removeChild(script) { scripts.splice(scripts.indexOf(script), 1) },
   }
   const document = {
     getElementsByTagName() { return [head] },
-    createElement() { return {} },
+    getElementById(id) { return [...links, ...scripts].find((element) => element.id === id) },
+    createElement(tag) { return { tagName: tag.toUpperCase() } },
   }
-  const window = { document }
-  runInNewContext(getExelyBootstrapScript(language), { window })
-  return { window, scripts }
+  const window = { document, location: { search } }
+  runInNewContext(script, { window, URLSearchParams })
+  return { window, scripts, links }
+}
+
+for (const search of ["", "?city=tbilisi&lang=ru", "?city=other"]) {
+  test(`early loader does not contact Exely on a non-Batumi page: ${search}`, () => {
+    const { window, scripts, links } = loaderEnvironment("ru", getExelyPreloadScript(), search)
+    assert.equal(scripts.length, 0)
+    assert.equal(links.length, 0)
+    assert.equal(window.bookingengine, undefined)
+  })
+}
+
+test("Batumi preloads the runtime before the search form is mounted", () => {
+  const { window, scripts, links } = loaderEnvironment("ru", getExelyPreloadScript(), "?city=batumi&lang=ru")
+  assert.equal(scripts.length, 1)
+  assert.equal(scripts[0].src, "https://ge-ibe.hopenapi.com/integration/loader.js")
+  assert.equal(scripts[0].async, true)
+  assert.equal(scripts[0].fetchPriority, "high")
+  assert.deepEqual(JSON.parse(JSON.stringify(window.bookingengine.integration.__cq)), [])
+  assert.deepEqual(links.filter(({ rel }) => rel === "preconnect").map(({ href }) => href), [
+    "https://ge-ibe.hopenapi.com", "https://cdn.behopenapi.com",
+  ])
+  const preload = links.find(({ rel }) => rel === "preload")
+  assert.equal(preload.href, scripts[0].src)
+  assert.equal(preload.as, "script")
+  assert.equal(preload.fetchPriority, "high")
+})
+
+for (const loaded of [false, true]) {
+  test(`warmup and form mounting share one loader when loaded=${loaded}`, () => {
+    const { window, scripts, links } = loaderEnvironment("ka", getExelyPreloadScript(), "?city=batumi&lang=ka")
+    window.bookingengine.integration.loaded = loaded
+    runInNewContext(getExelyPreloadScript(), { window, URLSearchParams })
+    runInNewContext(getExelyBootstrapScript("ka"), { window })
+    assert.equal(scripts.length, 1)
+    assert.equal(links.length, 5)
+    assert.deepEqual(JSON.parse(JSON.stringify(window.bookingengine.integration.__cq)), [
+      ["setContext", EXELY_CONTEXT, "ka"],
+      ["embed", "search-form", { container: "be-search-form" }],
+    ])
+  })
 }
 
 for (const language of ["en", "ru", "ka"]) {

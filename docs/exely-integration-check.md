@@ -22,6 +22,10 @@
 - No guest details, reservations, or payments were submitted.
 - Unit tests cover locale/context setup, booking links, room IDs, and loader
   fallback behavior.
+- Batumi starts the async runtime from the initial HTML head, with a
+  high-priority script preload and connection hints. Embedding waits for the
+  React container; the runtime and form are not loaded twice.
+- Non-Batumi URLs skip the Exely preload and runtime entirely.
 
 ## Pending Vendor/Published-Domain Check
 

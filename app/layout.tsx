@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Manrope, Montserrat } from 'next/font/google'
+import { EXELY_PRELOAD_SCRIPT_ID, getExelyPreloadScript } from '@/lib/exely-booking'
 import './globals.css'
 
 const manrope = Manrope({
@@ -45,6 +46,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-background">
+      <head>
+        <script
+          id={EXELY_PRELOAD_SCRIPT_ID}
+          dangerouslySetInnerHTML={{ __html: getExelyPreloadScript() }}
+        />
+      </head>
       <body className={`${manrope.variable} ${brandFont.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

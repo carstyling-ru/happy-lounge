@@ -33,6 +33,13 @@ inserted in the document head only on Batumi, once per document, with the three
 fallback hosts supplied by Exely. No booking, payment, or guest information is
 handled by the prototype itself.
 
+A small inline head script checks `city=batumi` before React loads. It adds
+preconnect/DNS hints, preloads the vendor loader at high priority, and starts
+its async runtime immediately. The React search form queues the hotel context
+and embed command only after its container is mounted. Tbilisi does not make
+these Exely requests. Vendor response times are still outside the site's
+control.
+
 The Expedia link remains only as a review source. All five Expedia reviews have
 localized author names, dates, scores, and concise paraphrases in EN/RU/KA in
 `lib/batumi-reviews.ts`; the summaries are explicitly labelled and link to the
