@@ -279,8 +279,25 @@
 
 .languagePicker {
   position: relative;
+  display: grid;
+  grid-template-columns: max-content;
 }
 
+/* Reserve the Georgian label's width even when another language is selected. */
+.languagePicker::before {
+  content: "ქართული";
+  grid-area: 1 / 1;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.languageButton {
+  grid-area: 1 / 1;
+  width: 100%;
+}
+
+.languagePicker::before,
 .languageButton,
 .languageOption,
 .cityButton,
@@ -300,6 +317,7 @@
   cursor: pointer;
 }
 
+.languagePicker::before,
 .languageButton,
 .cityButton {
   min-width: 96px;
@@ -1023,6 +1041,7 @@
     display: contents;
   }
 
+  .languagePicker::before,
   .languageButton,
   .languageOption,
   .cityButton,
