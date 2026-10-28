@@ -45,9 +45,9 @@ localized author names, month-precision dates, 5-point scores, and concise
 paraphrases in EN/RU/KA in
 `lib/batumi-reviews.ts`; the section introduces the summaries as based on recent
 reviews and links to the full reviews on Airbnb. The official Airbnb logo
-is stored locally. Both hotel maps use Google Maps. Tbilisi phone and email are
-not shown as Batumi contact
-details. The Batumi address is 47A Sherif Khimshiashvili St, Batumi 6010, Georgia.
+is stored locally. Both hotel maps use Google Maps. Each hotel has its own
+phone number below its address; both share tbilisicapsulehotel@gmail.com.
+Batumi uses +995555486568 at 47A Sherif Khimshiashvili St, Batumi 6010, Georgia.
 The archive contains no Google Search Console verification file or
 meta tag.
 

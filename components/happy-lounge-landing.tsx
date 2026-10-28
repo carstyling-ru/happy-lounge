@@ -26,9 +26,12 @@ import { batumiContent, batumiReviewsUrl, batumiGallery, batumiMapsUrl, batumiMa
 import { BATUMI_REVIEW_MAX_SCORE, batumiReviews } from "@/lib/batumi-reviews"
 import { ExelyBookingLink, ExelySearchForm } from "./exely-booking"
 import { batumiRoomTypes } from "@/lib/exely-booking"
+import { preventOrphans } from "@/lib/typography"
 
 const BOOKING_NEW_TAB_URL =
   "https://booking-online.otelms.com/?hms_system_id=19204/"
+const CONTACT_EMAIL = "tbilisicapsulehotel@gmail.com"
+const CONTACT_PHONES = { tbilisi: "+995555960581", batumi: "+995555486568" } as const
 const HERO_BACKGROUND =
   'linear-gradient(180deg, rgba(3, 6, 12, 0.18), rgba(3, 6, 12, 0.08) 34%, rgba(3, 6, 12, 0.42) 68%, rgba(3, 6, 12, 0.7) 100%), url("happy-lounge/vert-image.webp")'
 const BATUMI_HERO_BACKGROUND =
@@ -933,16 +936,18 @@ export function HappyLoungeLanding() {
                 type="button"
                 aria-label={cityLabels[language].language}
                 aria-expanded={menuOpen}
+                aria-controls="language-options"
                 onClick={() => {
                   setMenuOpen((value) => !value)
                   setCityMenuOpen(false)
                 }}
               >
                 {copy.langLabel}
+                <ChevronDown aria-hidden="true" size={16} />
               </button>
 
               {menuOpen && (
-                <div className={styles.languageMenu}>
+                <div className={styles.languageMenu} id="language-options">
                   {copy.langOptions.map((option) => (
                     <button
                       key={option.code}
@@ -961,7 +966,7 @@ export function HappyLoungeLanding() {
           </nav>
 
           <div className={styles.heroCopy}>
-            <h1 className={styles.heroTitle}>
+            <h1 className={styles.heroTitle} lang={language}>
               {city === "batumi" && language === "ru" ? (
                 <>
                   <span className={styles.heroTitleLine}>
@@ -975,9 +980,11 @@ export function HappyLoungeLanding() {
                     {createElement("nobr", null, "в уникальном")} пространстве
                   </span>
                 </>
-              ) : copy.heroTitle}
+              ) : city === "batumi" ? preventOrphans(copy.heroTitle, language) : copy.heroTitle}
             </h1>
-            <p className={styles.heroText}>{copy.heroText}</p>
+            <p className={styles.heroText}>
+              {city === "batumi" ? preventOrphans(copy.heroText, language) : copy.heroText}
+            </p>
             <div className={styles.bookingBar}>
               {city === "batumi" ? (
                 <ExelyBookingLink language={language} className={styles.heroButton}>
@@ -1016,8 +1023,9 @@ export function HappyLoungeLanding() {
             <h2 className={styles.sectionTitle} id="comfort-title">
               {city === "batumi" ? (
                 <>
-                  {copy.comfortLead} <span className={styles.accent}>{copy.comfortAccent}</span>{" "}
-                  {copy.comfortLeadSuffix}
+                  {preventOrphans(`${copy.comfortLead} `, language)}
+                  <span className={styles.accent}>{preventOrphans(copy.comfortAccent, language)}</span>{" "}
+                  {preventOrphans(copy.comfortLeadSuffix, language)}
                 </>
               ) : copy.comfortTitle}
             </h2>
@@ -1261,20 +1269,20 @@ export function HappyLoungeLanding() {
 
           <div className={styles.contactBlock}>
             <p className={styles.contactTitle}>Happy Lounge capsule hotel</p>
-            {city === "tbilisi" && <>
-            <a className={styles.contactLink} href="tel:+995555960581">
-              <Phone aria-hidden="true" />
-              +995555960581
-            </a>
-            <a className={styles.contactLink} href="mailto:tbilisicapsulehotel@gmail.com">
-              <Mail aria-hidden="true" />
-              tbilisicapsulehotel@gmail.com
-            </a>
-            </>}
             <p className={styles.location}>
               <MapPin aria-hidden="true" />
               <span>{copy.locationLine}</span>
             </p>
+            <div className={styles.contactDetails}>
+              <a className={styles.contactLink} href={`tel:${CONTACT_PHONES[city]}`}>
+                <Phone aria-hidden="true" />
+                <span>{CONTACT_PHONES[city]}</span>
+              </a>
+              <a className={styles.contactLink} href={`mailto:${CONTACT_EMAIL}`}>
+                <Mail aria-hidden="true" />
+                <span>{CONTACT_EMAIL}</span>
+              </a>
+            </div>
           </div>
 
           <div className={styles.map} aria-label="Map showing Happy Lounge capsule hotel location">

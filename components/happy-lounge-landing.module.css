@@ -221,19 +221,22 @@
   flex: 0 0 auto;
 }
 
-.cityButton {
+.cityButton,
+.languageButton {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
 
-.cityButton svg {
+.cityButton svg,
+.languageButton svg {
   flex: none;
   transition: transform .2s;
 }
 
-.cityButton[aria-expanded="true"] svg {
+.cityButton[aria-expanded="true"] svg,
+.languageButton[aria-expanded="true"] svg {
   transform: rotate(180deg);
 }
 
@@ -322,6 +325,10 @@
 .cityButton {
   min-width: 96px;
   text-align: left;
+}
+
+.languagePicker::before {
+  padding-right: 38px;
 }
 
 .languageMenu,
@@ -744,6 +751,16 @@
   font-weight: 800;
 }
 
+.contactDetails {
+  flex: 0 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 22px;
+  min-width: 0;
+}
+
 .contactLink,
 .location {
   display: inline-flex;
@@ -1061,11 +1078,17 @@
     white-space: nowrap;
   }
 
-  .cityButton {
+  .languagePicker::before {
+    padding-right: 22px;
+  }
+
+  .cityButton,
+  .languageButton {
     gap: 4px;
   }
 
-  .cityButton svg {
+  .cityButton svg,
+  .languageButton svg {
     width: 12px;
     height: 12px;
   }
@@ -1195,7 +1218,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
   .brandWordmark {
     font-size: 18px;
     gap: 3px;
@@ -1206,13 +1229,23 @@
   }
 }
 
+@media (max-width: 360px) {
+  .brandWordmark {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 340px) {
+  .heroBookingLayout .heroTitle:lang(en) {
+    font-size: 26px;
+  }
+
   .nav {
     left: 12px;
     right: 12px;
   }
 
   .brandWordmark {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
