@@ -40,10 +40,11 @@ and embed command only after its container is mounted. Tbilisi does not make
 these Exely requests. Vendor response times are still outside the site's
 control.
 
-The Expedia link remains only as a review source. All five Expedia reviews have
-localized author names, dates, scores, and concise paraphrases in EN/RU/KA in
+The carousel uses the three reviews from the supplied Airbnb listing, with
+localized author names, month-precision dates, 5-point scores, and concise
+paraphrases in EN/RU/KA in
 `lib/batumi-reviews.ts`; the section introduces the summaries as based on recent
-reviews and links to the full reviews on Expedia.com. The official Expedia logo
+reviews and links to the full reviews on Airbnb. The official Airbnb logo
 is stored locally. Both hotel maps use Google Maps. Tbilisi phone and email are
 not shown as Batumi contact
 details. The Batumi address is 47A Sherif Khimshiashvili St, Batumi 6010, Georgia.
@@ -55,7 +56,8 @@ meta tag.
 - Copy: https://docs.google.com/document/d/1p8tszczkxW0bJj_wDt92LG7AcPPRdZzZoEmiCr8A7fo/edit
 - Address and photos: https://www.expedia.de/en/Batumi-Hotels-Capsule-Hotel-Happy-Lounge-Batumi.h136443801.Hotel-Information
 - Hero: https://images.trvl-media.com/lodging/137000000/136450000/136443900/136443801/038c8a95.jpg
-- Review excerpt: https://www.expedia.ie/New-Boulevard-Batumi-Hotels.0-n553248633981744058-0.Travel-Guide-Filter-Hotels
+- Reviews: https://www.airbnb.ie/rooms/1794890142374438952/reviews
+- Host profile: https://www.airbnb.ie/users/profile/1794890143021759411
 
 ## Checks
 

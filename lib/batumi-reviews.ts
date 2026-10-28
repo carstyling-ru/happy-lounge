@@ -1,70 +1,55 @@
 type ReviewLanguage = "en" | "ru" | "ka"
 
-// Concise paraphrases of the five Expedia reviews, not verbatim quotations.
+export const BATUMI_REVIEW_MAX_SCORE = 5
+
+// Airbnb shows relative dates; retain month precision without guessing exact days.
+// Concise paraphrases of the three reviews on the supplied Airbnb listing.
 const reviews = [
   {
-    id: "6abf669e00c5b4289f1af452",
-    date: "2026-10-02",
-    score: 10,
-    author: { en: "Valeri", ru: "Валерий", ka: "ვალერი" },
+    id: "1801951648932250915",
+    date: "2026-10",
+    score: 5,
+    author: { en: "Miron", ru: "Мирон", ka: "მირონი" },
     text: {
-      en: "Welcoming staff, restful capsules and a handy location.",
-      ru: "Приветливый персонал, уютные капсулы и удобное расположение.",
-      ka: "სტუმარმა შეაქო პერსონალი, კაფსულები და მდებარეობა.",
+      en: "Everything was excellent.",
+      ru: "Всё отлично.",
+      ka: "ყველაფერი შესანიშნავი იყო.",
     },
   },
   {
-    id: "6aba1c63287ca5052544e1fe",
-    date: "2026-09-28",
-    score: 10,
-    author: { en: "Yuliya", ru: "Юлия", ka: "იულია" },
+    id: "1798342412452830358",
+    date: "2026-10",
+    score: 5,
+    author: { en: "Nur", ru: "Нур", ka: "ნური" },
     text: {
-      en: "A newly opened, tidy hotel with a welcoming team.",
-      ru: "Новый, чистый отель с гостеприимной командой.",
-      ka: "სტუმარს მოეწონა ახალი, სუფთა სასტუმრო და პერსონალის სტუმართმოყვარეობა.",
+      en: "A positive, unusual stay with no issues. The place was clean and orderly.",
+      ru: "Необычный и приятный опыт. Всё прошло без проблем, было чисто и аккуратно.",
+      ka: "უჩვეულო და სასიამოვნო გამოცდილება: ყველაფერი უპრობლემოდ, სუფთად და მოწესრიგებულად იყო.",
     },
   },
   {
-    id: "6ac5e0b00503191a1ef82d6a",
-    date: "2026-10-07",
-    score: 10,
-    author: { en: "Alexander", ru: "Александр", ka: "ალექსანდრე" },
+    id: "1797604812838781287",
+    date: "2026-10",
+    score: 5,
+    author: { en: "Gyeong-sik (경식)", ru: "Кёнсик (경식)", ka: "გიონგსიკი (경식)" },
     text: {
-      en: "An affordable base near shops and restaurants, with private capsules and attentive service.",
-      ru: "Доступное жильё рядом с магазинами и ресторанами, с приватными капсулами и внимательным персоналом.",
-      ka: "სტუმარმა აღნიშნა ხელმისაწვდომი ფასი, პირადი სივრცე, კარგი მომსახურება და ახლომდებარე მაღაზიები.",
-    },
-  },
-  {
-    id: "6abf4f2100c5b4289f198665",
-    date: "2026-10-02",
-    score: 10,
-    author: { en: "Ekaterina", ru: "Екатерина", ka: "ეკატერინა" },
-    text: {
-      en: "Courteous reception, fresh bedding and a dedicated women's capsule area stood out.",
-      ru: "Понравились вежливое обслуживание, чистое постельное бельё и отдельная зона капсул для женщин.",
-      ka: "სტუმარმა შეაქო მისაღების პერსონალი, სუფთა თეთრეული და ქალებისთვის ცალკე კაფსულების ზონა.",
-    },
-  },
-  {
-    id: "6abf4b760503191a1e4d0d98",
-    date: "2026-10-02",
-    score: 10,
-    author: { en: "Dmitrii", ru: "Дмитрий", ka: "დმიტრი" },
-    text: {
-      en: "A positive first capsule stay: pristine facilities, kitchenette and well-equipped sleeping pods.",
-      ru: "Первый опыт ночёвки в капсуле оказался удачным: новые помещения, мини-кухня и хорошее оснащение.",
-      ka: "კაფსულაში პირველმა ღამემ კარგი შთაბეჭდილება დატოვა: ახალი სივრცე, პატარა სამზარეულო და კომფორტული კაფსულა.",
+      en: "A clean, spacious place where it was easy to relax.",
+      ru: "Чистое и просторное жильё, где можно хорошо отдохнуть.",
+      ka: "სუფთა და ფართო საცხოვრებელი, სადაც დასვენება სასიამოვნო იყო.",
     },
   },
 ] as const
 
 const ratingLabels = { en: "Excellent", ru: "Отлично", ka: "შესანიშნავია" }
+const monthLabels = {
+  "2026-10": { en: "October 2026", ru: "октябрь 2026 г.", ka: "2026 წლის ოქტომბერი" },
+} as const
 
 function localizeReviews(language: ReviewLanguage) {
   return reviews.map((review) => ({
     id: review.id,
     date: review.date,
+    dateLabel: monthLabels[review.date][language],
     score: review.score,
     author: review.author[language],
     title: ratingLabels[language],

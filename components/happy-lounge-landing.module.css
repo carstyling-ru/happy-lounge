@@ -606,6 +606,8 @@
 
 .reviewLink {
   display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   align-items: center;
   justify-content: center;
   gap: 4px;
@@ -621,10 +623,17 @@
   display: inline-block;
 }
 
-.expediaLogo {
+.reviewProvider {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.airbnbLogo {
   display: inline-block;
-  width: 90px;
-  height: 20px;
+  width: 72px;
+  height: 23px;
+  flex: none;
   object-fit: contain;
 }
 

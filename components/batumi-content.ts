@@ -1,7 +1,6 @@
-export const batumiExpediaUrl =
-  "https://www.expedia.com/Batumi-Hotels-Capsule-Hotel-Happy-Lounge-Batumi.h136443801.Hotel-Information"
+export const batumiAirbnbUrl = "https://www.airbnb.ie/rooms/1794890142374438952"
 
-export const batumiReviewsUrl = new URL("?pwaDialog=summary-reviews-136443801", batumiExpediaUrl).href
+export const batumiReviewsUrl = `${batumiAirbnbUrl}/reviews`
 
 export const batumiMapsUrl =
   "https://www.google.com/maps/search/?api=1&query=47A+Sherif+Khimshiashvili+St,+Batumi+6010,+Georgia"
@@ -59,9 +58,9 @@ export const batumiContent = {
     roomsText:
       "Minimal Basic offers simple comfort. Immersive Full includes a built-in Smart TV. Double Capsule is designed for two. Every capsule has adjustable RGB lighting, a mirror, and ventilation.",
     reviewsLead: "Based on recent",
-    reviewsLink: "reviews on Expedia",
+    reviewsLink: "reviews on Airbnb",
     reviewsLeadSuffix: "for Happy Lounge in Batumi",
-    reviewsCta: "Read all on Expedia",
+    reviewsCta: "Read all on Airbnb",
     reviewPrev: "Previous review",
     reviewNext: "Next review",
   },
@@ -117,9 +116,9 @@ export const batumiContent = {
     roomsText:
       "Minimal Basic - простой комфорт. Immersive Full - капсула со встроенным Smart TV. Double Capsule - вариант для двоих. В каждой капсуле есть регулируемая RGB-подсветка, зеркало и вентиляция.",
     reviewsLead: "По материалам недавних",
-    reviewsLink: "отзывов на Expedia",
+    reviewsLink: "отзывов на Airbnb",
     reviewsLeadSuffix: "о Happy Lounge в Батуми",
-    reviewsCta: "Читать все на Expedia",
+    reviewsCta: "Читать все на Airbnb",
     reviewPrev: "Предыдущий отзыв",
     reviewNext: "Следующий отзыв",
   },
@@ -175,9 +174,9 @@ export const batumiContent = {
     roomsText:
       "Minimal Basic გთავაზობთ მარტივ კომფორტს. Immersive Full აღჭურვილია ჩაშენებული Smart TV-ით. Double Capsule განკუთვნილია ორი სტუმრისთვის. ყველა კაფსულას აქვს რეგულირებადი RGB განათება, სარკე და ვენტილაცია.",
     reviewsLead: "მასალა ეფუძნება",
-    reviewsLink: "Expedia-ს ბოლო შეფასებებს",
+    reviewsLink: "Airbnb-ს ბოლო შეფასებებს",
     reviewsLeadSuffix: "ბათუმის Happy Lounge-ის შესახებ",
-    reviewsCta: "ყველას წაკითხვა Expedia-ზე",
+    reviewsCta: "ყველას წაკითხვა Airbnb-ზე",
     reviewPrev: "წინა შეფასება",
     reviewNext: "შემდეგი შეფასება",
   },

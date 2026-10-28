@@ -1,16 +1,19 @@
 import assert from "node:assert/strict"
 import test from "node:test"
 
-import { batumiContent, batumiExpediaUrl, batumiMapsUrl, batumiReviewsUrl } from "../components/batumi-content.ts"
+import { batumiContent, batumiAirbnbUrl, batumiMapsUrl, batumiReviewsUrl } from "../components/batumi-content.ts"
 
-test("Batumi reviews link to the supplied Expedia.com property", () => {
-  const property = new URL(batumiExpediaUrl)
+test("Batumi reviews link to the supplied Airbnb listing", () => {
+  const property = new URL(batumiAirbnbUrl)
   const reviews = new URL(batumiReviewsUrl)
-  assert.equal(property.origin, "https://www.expedia.com")
+  assert.equal(property.origin, "https://www.airbnb.ie")
   assert.equal(reviews.origin, property.origin)
-  assert.equal(reviews.pathname, property.pathname)
-  assert.match(property.pathname, /h136443801\.Hotel-Information$/)
-  assert.equal(reviews.searchParams.get("pwaDialog"), "summary-reviews-136443801")
+  assert.equal(property.pathname, "/rooms/1794890142374438952")
+  assert.equal(reviews.pathname, `${property.pathname}/reviews`)
+  for (const language of ["en", "ru", "ka"]) {
+    assert.match(batumiContent[language].reviewsLink, /Airbnb/)
+    assert.match(batumiContent[language].reviewsCta, /Airbnb/)
+  }
 })
 
 test("the corrected Batumi address is localized in every language", () => {

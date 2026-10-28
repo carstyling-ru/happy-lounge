@@ -23,7 +23,7 @@ import {
 
 import styles from "./happy-lounge-landing.module.css"
 import { batumiContent, batumiReviewsUrl, batumiGallery, batumiMapsUrl } from "./batumi-content"
-import { batumiReviews } from "@/lib/batumi-reviews"
+import { BATUMI_REVIEW_MAX_SCORE, batumiReviews } from "@/lib/batumi-reviews"
 import { ExelyBookingLink, ExelySearchForm } from "./exely-booking"
 import { batumiRoomTypes } from "@/lib/exely-booking"
 
@@ -117,17 +117,19 @@ function GoogleLogo() {
 }
 
 function renderReviewCta(label: string, city: City) {
-  const [before, after] = label.split(city === "batumi" ? "Expedia" : "Google")
+  const [before, after] = label.split(city === "batumi" ? "Airbnb" : "Google")
 
   if (after === undefined) return label
 
   return (
     <>
       {before}
-      {city === "batumi" ? (
-        <img className={styles.expediaLogo} src="happy-lounge/expedia-logo.svg" alt="Expedia" width={90} height={20} />
-      ) : <GoogleLogo />}
-      {after}
+      <span className={styles.reviewProvider}>
+        {city === "batumi" ? (
+          <img className={styles.airbnbLogo} src="happy-lounge/airbnb-logo.svg" alt="Airbnb" width={72} height={23} />
+        ) : <GoogleLogo />}
+        {after}
+      </span>
     </>
   )
 }
@@ -1109,8 +1111,8 @@ export function HappyLoungeLanding() {
               aria-live="polite"
             >
               <div>
-                <div className={styles.stars} aria-label={activeBatumiReview ? `${activeBatumiReview.score} / 10` : "Five stars"}>
-                  {activeBatumiReview ? `${activeBatumiReview.score} / 10` : Array.from({ length: 5 }, (_, index) => (
+                <div className={styles.stars} aria-label={activeBatumiReview ? `${activeBatumiReview.score} / ${BATUMI_REVIEW_MAX_SCORE}` : "Five stars"}>
+                  {activeBatumiReview ? `${activeBatumiReview.score} / ${BATUMI_REVIEW_MAX_SCORE}` : Array.from({ length: 5 }, (_, index) => (
                     <Star key={index} aria-hidden="true" />
                   ))}
                 </div>
@@ -1121,7 +1123,7 @@ export function HappyLoungeLanding() {
                   <>
                     <p className={styles.person}>{activeBatumiReview.author}</p>
                     <time className={styles.reviewDate} dateTime={activeBatumiReview.date}>
-                      {new Intl.DateTimeFormat(copy.locale, { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${activeBatumiReview.date}T12:00:00Z`))}
+                      {activeBatumiReview.dateLabel}
                     </time>
                   </>
                 )}
