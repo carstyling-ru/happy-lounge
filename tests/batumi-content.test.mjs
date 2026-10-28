@@ -1,7 +1,7 @@
 import assert from "node:assert/strict"
 import test from "node:test"
 
-import { batumiContent, batumiAirbnbUrl, batumiMapsUrl, batumiReviewsUrl } from "../components/batumi-content.ts"
+import { batumiContent, batumiAirbnbUrl, batumiMapsUrl, batumiMapsEmbedUrl, batumiReviewsUrl } from "../components/batumi-content.ts"
 
 test("Batumi reviews link to the supplied Airbnb listing", () => {
   const property = new URL(batumiAirbnbUrl)
@@ -27,9 +27,17 @@ test("the corrected Batumi address is localized in every language", () => {
   assert.match(batumiContent.ka.locationLine, /შერიფ ხიმშიაშვილის/)
 })
 
-test("Google Maps opens the corrected street address", () => {
+test("Google Maps link and embed target the supplied hotel business card", () => {
+  const place = "0x406785283a75ac67:0xbf9e1c1d1fb99669"
   const maps = new URL(batumiMapsUrl)
+  const embed = new URL(batumiMapsEmbedUrl)
   assert.equal(maps.origin, "https://www.google.com")
-  assert.equal(maps.searchParams.get("api"), "1")
-  assert.equal(maps.searchParams.get("query"), "47A Sherif Khimshiashvili St, Batumi 6010, Georgia")
+  assert.ok(maps.pathname.startsWith("/maps/place/Happy+Lounge+Capsule+Hotel/"))
+  assert.ok(maps.pathname.includes(place))
+  assert.equal(embed.origin, maps.origin)
+  assert.equal(embed.pathname, "/maps/embed")
+  const parameters = embed.searchParams.get("pb")
+  assert.ok(parameters.includes(place))
+  assert.ok(parameters.includes("Happy Lounge Capsule Hotel"))
+  assert.ok(parameters.includes("!2d41.6037131!3d41.6316135"))
 })

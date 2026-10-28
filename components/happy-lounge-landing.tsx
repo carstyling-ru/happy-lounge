@@ -22,7 +22,7 @@ import {
 } from "lucide-react"
 
 import styles from "./happy-lounge-landing.module.css"
-import { batumiContent, batumiReviewsUrl, batumiGallery, batumiMapsUrl } from "./batumi-content"
+import { batumiContent, batumiReviewsUrl, batumiGallery, batumiMapsUrl, batumiMapsEmbedUrl } from "./batumi-content"
 import { BATUMI_REVIEW_MAX_SCORE, batumiReviews } from "@/lib/batumi-reviews"
 import { ExelyBookingLink, ExelySearchForm } from "./exely-booking"
 import { batumiRoomTypes } from "@/lib/exely-booking"
@@ -37,8 +37,6 @@ const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Happy+Lounge+capsule+hotel+63+Merab+Kostava+St+Tbilisi"
 const GOOGLE_MAPS_EMBED_URL =
   "https://www.google.com/maps?q=41.714087,44.782185&z=16&output=embed"
-const BATUMI_GOOGLE_MAPS_EMBED_URL =
-  "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2982.118036083087!2d41.603849999999994!3d41.63158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDM3JzUzLjciTiA0McKwMzYnMTMuOSJF!5e0!3m2!1sen!2sde!4v1793021016877!5m2!1sen!2sde"
 
 type GalleryImage = {
   src: string
@@ -545,7 +543,7 @@ export function HappyLoungeLanding() {
     ? batumiMapsUrl
     : GOOGLE_MAPS_URL
   const mapsEmbedUrl = city === "batumi"
-    ? BATUMI_GOOGLE_MAPS_EMBED_URL
+    ? batumiMapsEmbedUrl
     : GOOGLE_MAPS_EMBED_URL
   const heroBackground = city === "batumi"
     ? BATUMI_HERO_BACKGROUND

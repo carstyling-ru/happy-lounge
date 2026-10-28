@@ -3,7 +3,10 @@ export const batumiAirbnbUrl = "https://www.airbnb.ie/rooms/1794890142374438952"
 export const batumiReviewsUrl = `${batumiAirbnbUrl}/reviews`
 
 export const batumiMapsUrl =
-  "https://www.google.com/maps/search/?api=1&query=47A+Sherif+Khimshiashvili+St,+Batumi+6010,+Georgia"
+  "https://www.google.com/maps/place/Happy+Lounge+Capsule+Hotel/@41.6316135,41.6037131,17z/data=!3m1!4b1!4m9!3m8!1s0x406785283a75ac67:0xbf9e1c1d1fb99669!5m2!4m1!1i2!8m2!3d41.6316135!4d41.6037131!16s%2Fg%2F11zfb26nwc?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D"
+
+export const batumiMapsEmbedUrl =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.1164863221325!2d41.6037131!3d41.6316135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406785283a75ac67%3A0xbf9e1c1d1fb99669!2sHappy%20Lounge%20Capsule%20Hotel!5e0!3m2!1sru!2sde!4v1793217307945!5m2!1sru!2sde"
 
 export const batumiContent = {
   en: {
