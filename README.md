@@ -42,10 +42,12 @@ control.
 
 The Expedia link remains only as a review source. All five Expedia reviews have
 localized author names, dates, scores, and concise paraphrases in EN/RU/KA in
-`lib/batumi-reviews.ts`; the summaries are explicitly labelled and link to the
-full source reviews. The official Expedia logo is stored locally. Both hotel
-maps use Google Maps. Tbilisi phone and email are not shown as Batumi contact
-details. The archive contains no Google Search Console verification file or
+`lib/batumi-reviews.ts`; the section introduces the summaries as based on recent
+reviews and links to the full reviews on Expedia.com. The official Expedia logo
+is stored locally. Both hotel maps use Google Maps. Tbilisi phone and email are
+not shown as Batumi contact
+details. The Batumi address is 47A Sherif Khimshiashvili St, Batumi 6010, Georgia.
+The archive contains no Google Search Console verification file or
 meta tag.
 
 ## Batumi Sources

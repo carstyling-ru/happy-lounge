@@ -40,9 +40,9 @@ error above with Exely if the issue persists. The local-only result does not
 establish whether the cause is host restrictions, browser behavior, or the
 service configuration.
 
-The popup's address is Sherif Khimshiashvili 47a. The supplied Expedia listing
-uses Mamuladze 31. The prototype retains the user-supplied address; confirm with
-the hotel whether these are different entrances to the same property.
+The user confirmed the address on 2026-10-29 as 47A Sherif Khimshiashvili St,
+Batumi 6010, Georgia. The footer and Google Maps link now use this address,
+matching the street and building shown by the Exely popup.
 
 ## Search Console
 

@@ -1,7 +1,10 @@
 export const batumiExpediaUrl =
-  "https://www.expedia.de/en/Batumi-Hotels-Capsule-Hotel-Happy-Lounge-Batumi.h136443801.Hotel-Information?currency=EUR&locale=en_GB&siteid=6"
+  "https://www.expedia.com/Batumi-Hotels-Capsule-Hotel-Happy-Lounge-Batumi.h136443801.Hotel-Information"
 
-export const batumiReviewsUrl = `${batumiExpediaUrl}&pwaDialog=summary-reviews-136443801`
+export const batumiReviewsUrl = new URL("?pwaDialog=summary-reviews-136443801", batumiExpediaUrl).href
+
+export const batumiMapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=47A+Sherif+Khimshiashvili+St,+Batumi+6010,+Georgia"
 
 export const batumiContent = {
   en: {
@@ -51,14 +54,13 @@ export const batumiContent = {
     ],
     detailGalleryText:
       "Take a closer look at the capsules, coworking area, shared showers, and entrance to Happy Lounge in Batumi.",
-    locationLine: "Mamuladze 31, Batumi, Adjara, 6004, Georgia",
+    locationLine: "47A Sherif Khimshiashvili St, Batumi 6010, Georgia",
     roomsTitle: "Choose Your Capsule",
     roomsText:
       "Minimal Basic offers simple comfort. Immersive Full includes a built-in Smart TV. Double Capsule is designed for two. Every capsule has adjustable RGB lighting, a mirror, and ventilation.",
     reviewsLead: "Based on recent",
     reviewsLink: "reviews on Expedia",
     reviewsLeadSuffix: "for Happy Lounge in Batumi",
-    reviewsSource: "Expedia · Review summary",
     reviewsCta: "Read all on Expedia",
     reviewPrev: "Previous review",
     reviewNext: "Next review",
@@ -110,14 +112,13 @@ export const batumiContent = {
     ],
     detailGalleryText:
       "Рассмотрите капсулы, пространство для коворкинга, общие душевые и вход в Happy Lounge в Батуми.",
-    locationLine: "Мамуладзе, 31, Батуми, Аджария, 6004, Грузия",
+    locationLine: "ул. Шерифа Химшиашвили, 47А, Батуми 6010, Грузия",
     roomsTitle: "Выберите свою капсулу",
     roomsText:
       "Minimal Basic - простой комфорт. Immersive Full - капсула со встроенным Smart TV. Double Capsule - вариант для двоих. В каждой капсуле есть регулируемая RGB-подсветка, зеркало и вентиляция.",
     reviewsLead: "По материалам недавних",
     reviewsLink: "отзывов на Expedia",
     reviewsLeadSuffix: "о Happy Lounge в Батуми",
-    reviewsSource: "Expedia · Краткий пересказ",
     reviewsCta: "Читать все на Expedia",
     reviewPrev: "Предыдущий отзыв",
     reviewNext: "Следующий отзыв",
@@ -169,14 +170,13 @@ export const batumiContent = {
     ],
     detailGalleryText:
       "ახლოდან დაათვალიერეთ კაფსულები, ერთობლივი მუშაობის სივრცე, საერთო საშხაპეები და Happy Lounge-ის შესასვლელი ბათუმში.",
-    locationLine: "მამულაძის ქუჩა 31, ბათუმი, აჭარა, 6004, საქართველო",
+    locationLine: "შერიფ ხიმშიაშვილის ქუჩა 47ა, ბათუმი 6010, საქართველო",
     roomsTitle: "აირჩიეთ თქვენი კაფსულა",
     roomsText:
       "Minimal Basic გთავაზობთ მარტივ კომფორტს. Immersive Full აღჭურვილია ჩაშენებული Smart TV-ით. Double Capsule განკუთვნილია ორი სტუმრისთვის. ყველა კაფსულას აქვს რეგულირებადი RGB განათება, სარკე და ვენტილაცია.",
     reviewsLead: "მასალა ეფუძნება",
     reviewsLink: "Expedia-ს ბოლო შეფასებებს",
     reviewsLeadSuffix: "ბათუმის Happy Lounge-ის შესახებ",
-    reviewsSource: "Expedia · მოკლე შეჯამება",
     reviewsCta: "ყველას წაკითხვა Expedia-ზე",
     reviewPrev: "წინა შეფასება",
     reviewNext: "შემდეგი შეფასება",

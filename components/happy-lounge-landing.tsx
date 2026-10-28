@@ -1,7 +1,7 @@
 "use client"
 
 import type { CSSProperties, TouchEvent } from "react"
-import { useEffect, useRef, useState } from "react"
+import { createElement, useEffect, useRef, useState } from "react"
 import {
   BedDouble,
   ChevronDown,
@@ -22,7 +22,7 @@ import {
 } from "lucide-react"
 
 import styles from "./happy-lounge-landing.module.css"
-import { batumiContent, batumiReviewsUrl, batumiGallery } from "./batumi-content"
+import { batumiContent, batumiReviewsUrl, batumiGallery, batumiMapsUrl } from "./batumi-content"
 import { batumiReviews } from "@/lib/batumi-reviews"
 import { ExelyBookingLink, ExelySearchForm } from "./exely-booking"
 import { batumiRoomTypes } from "@/lib/exely-booking"
@@ -540,7 +540,7 @@ export function HappyLoungeLanding() {
   const activeBatumiReview = city === "batumi" ? batumiReviews[language][reviewIndex] : null
   const icons = city === "batumi" ? [MapPin, Waves, Zap, CookingPot, Lock, Luggage] : featureIcons
   const mapsUrl = city === "batumi"
-    ? "https://www.google.com/maps/search/?api=1&query=41.63158,41.60385"
+    ? batumiMapsUrl
     : GOOGLE_MAPS_URL
   const mapsEmbedUrl = city === "batumi"
     ? BATUMI_GOOGLE_MAPS_EMBED_URL
@@ -961,7 +961,22 @@ export function HappyLoungeLanding() {
           </nav>
 
           <div className={styles.heroCopy}>
-            <h1 className={styles.heroTitle}>{copy.heroTitle}</h1>
+            <h1 className={styles.heroTitle}>
+              {city === "batumi" && language === "ru" ? (
+                <>
+                  <span className={styles.heroTitleLine}>
+                    Проживание {createElement("nobr", null, "с комфортом")}{" "}
+                  </span>
+                  <span className={styles.heroTitleLine}>
+                    {createElement("nobr", null, "в 200 метрах")}{" "}
+                    {createElement("nobr", null, "от моря")}{" "}
+                  </span>
+                  <span className={styles.heroTitleLine}>
+                    {createElement("nobr", null, "в уникальном")} пространстве
+                  </span>
+                </>
+              ) : copy.heroTitle}
+            </h1>
             <p className={styles.heroText}>{copy.heroText}</p>
             <div className={styles.bookingBar}>
               {city === "batumi" ? (
@@ -999,12 +1014,17 @@ export function HappyLoungeLanding() {
         <section className={styles.section} aria-labelledby="comfort-title">
           <div className={styles.sectionHead}>
             <h2 className={styles.sectionTitle} id="comfort-title">
-              {copy.comfortTitle}
+              {city === "batumi" ? (
+                <>
+                  {copy.comfortLead} <span className={styles.accent}>{copy.comfortAccent}</span>{" "}
+                  {copy.comfortLeadSuffix}
+                </>
+              ) : copy.comfortTitle}
             </h2>
-            <p className={styles.lead}>
+            {city !== "batumi" && <p className={styles.lead}>
               {copy.comfortLead} <span className={styles.accent}>{copy.comfortAccent}</span>{" "}
               {copy.comfortLeadSuffix}
-            </p>
+            </p>}
           </div>
 
           <div className={styles.features}>
@@ -1085,7 +1105,7 @@ export function HappyLoungeLanding() {
 
             <article
               key={reviewIndex}
-              className={`${styles.reviewCard} ${city === "batumi" ? styles.reviewCardBatumi : ""}`}
+              className={styles.reviewCard}
               aria-live="polite"
             >
               <div>
@@ -1094,7 +1114,7 @@ export function HappyLoungeLanding() {
                     <Star key={index} aria-hidden="true" />
                   ))}
                 </div>
-                <p className={styles.reviewSource}>{copy.reviewsSource}</p>
+                {city !== "batumi" && <p className={styles.reviewSource}>{copy.reviewsSource}</p>}
                 <h3 className={styles.reviewTitle}>{reviews[reviewIndex].title}</h3>
                 <p className={styles.quote}>{reviews[reviewIndex].text}</p>
                 {activeBatumiReview && (

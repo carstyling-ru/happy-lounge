@@ -367,6 +367,10 @@
   letter-spacing: 0.01em;
 }
 
+.heroTitleLine {
+  display: block;
+}
+
 .heroText {
   max-width: 820px;
   margin: 0 auto;
@@ -547,10 +551,6 @@
   text-align: center;
   box-shadow: 0 10px 30px rgba(26, 31, 40, 0.04);
   animation: swipeContentIn 0.24s ease both;
-}
-
-.reviewCardBatumi .reviewSource {
-  letter-spacing: 0;
 }
 
 .stars {
