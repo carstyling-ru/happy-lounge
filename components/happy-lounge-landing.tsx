@@ -1252,17 +1252,19 @@ export function HappyLoungeLanding() {
 
           {city === "batumi" && (
             <div className={styles.roomsSummary}>
-              <h2 className={styles.sectionTitle}>{batumiContent[language].roomsTitle}</h2>
-              <p className={styles.lead}>{batumiContent[language].roomsText}</p>
-              <div className={styles.roomBookingOptions}>
-                {batumiRoomTypes.map((room) => (
-                  <div key={room.id} className={styles.roomBookingOption}>
-                    <h3>{room.name}</h3>
-                    <ExelyBookingLink language={language} room={room.id} className={styles.roomsBooking}>
-                      {copy.heroButton}
-                    </ExelyBookingLink>
-                  </div>
-                ))}
+              <div className={styles.roomsSummaryContent}>
+                <h2 className={styles.sectionTitle}>{batumiContent[language].roomsTitle}</h2>
+                <p className={styles.lead}>{batumiContent[language].roomsText}</p>
+                <div className={styles.roomBookingOptions}>
+                  {batumiRoomTypes.map((room) => (
+                    <div key={room.id} className={styles.roomBookingOption}>
+                      <h3>{room.name}</h3>
+                      <ExelyBookingLink language={language} room={room.id} className={styles.roomsBooking}>
+                        {copy.heroButton}
+                      </ExelyBookingLink>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           )}

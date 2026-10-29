@@ -258,6 +258,11 @@
   text-align: center;
 }
 
+.roomsSummaryContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .roomsBooking {
   display: inline-flex;
   justify-content: center;
@@ -921,6 +926,32 @@
   to {
     opacity: 1;
     filter: blur(0);
+  }
+}
+
+@media (min-width: 901px) {
+  .intro,
+  .section {
+    padding-top: 44px;
+  }
+
+  .features {
+    row-gap: 44px;
+  }
+
+  .reviews {
+    margin-top: 44px;
+  }
+
+  .roomsSummary {
+    max-width: none;
+    margin-top: 44px;
+    padding: 44px 20px 60px;
+    background: #f3f3f4;
+  }
+
+  .roomBookingOptions {
+    margin-top: 44px;
   }
 }
 
