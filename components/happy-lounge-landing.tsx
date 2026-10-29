@@ -1270,7 +1270,7 @@ export function HappyLoungeLanding() {
           )}
 
           <div className={styles.contactBlock}>
-            <p className={styles.contactTitle}>Happy Lounge capsule hotel</p>
+            <p className={styles.contactTitle}>Happy Lounge Capsule Hotel</p>
             <p className={styles.location}>
               <MapPin aria-hidden="true" />
               <span>{copy.locationLine}</span>
